@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h2 style = "text-align: center; margin-top:10px;">Create Blog</h2>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <form action="/" method="POST" >
+                    <div class="mb-3">
+                      <label  class="form-label">Blog Title</label>
+                      <input type="text" class="form-control" id="exampleInputtext1" placeholder="Title" name="title" required >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Blog Snippet</label>
+                        <input type="text" class="form-control" id="exampleInputtext2" placeholder="Snippet" name="snippet" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Blog Body</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Body" name="body" required></textarea>
+                    </div>                  
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .delete{
+            border:1px solid red;
+            padding:8px 10px 8px 10px;
+            border-radius: 5px;
+            color:white;
+            background-color:#ff3333;
+            text-decoration: none;
+        }
+        .delete:hover{
+            background-color: #ff1a1a;
+            text-decoration: none;
+            color:white;
+        }
+    </style>    
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h2 style = "text-align: center; margin-top:10px;">Blogs</h2>
+        <div class="row mt-3">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                    <div class="container-fluid">
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/contact-us">Contact Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/blogs/create-blogs">Create Blogs</a>
+                          </li>   
+                        </ul>
+                        
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-8 offset-md-2">
+                <hr>
+             <h4><%= result.title %>        <button class="btn btn-success" style="float:right;" onclick="window.print()">Print</button>             </h4>
+             <h5><%= result.snippet %></h5> 
+             <p><%= result.body %></p>
+             <hr>
+             <a href="#" class="delete" data-doc="<%= result._id %>">Delete</a>
+       
+           </div>
+        </div>
+
+    </div>
+    <script>
+          const trash = document.querySelector('a.delete');
+        
+        trash.addEventListener('click',(e)=>{
+            const endpoint = `/${trash.dataset.doc}`; 
+            fetch(endpoint,{
+                method:'DELETE'
+            })
+            .then((response)=>response.json())
+            .then((data)=>{window.location.href = data.redirect})
+            .catch(err=>console.log(err));
+        });
+    </script>
+</body>
+</html>

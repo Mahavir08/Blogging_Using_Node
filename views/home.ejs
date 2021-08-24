@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      .text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+       -webkit-line-clamp: 5; /* number of lines to show */
+       -webkit-box-orient: vertical;
+      }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h2 style = "text-align: center; margin-top:10px;">Home Page</h2>
+        <div class="row mt-3">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                    <div class="container-fluid">
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/contact-us">Contact Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-light" style="font-size: 18px;" aria-current="page" href="/blogs/create-blogs">Create Blogs</a>
+                          </li>   
+                        </ul>
+                        
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-8 offset-md-2">
+              <hr>
+                <% if (result.length > 0){ %>
+                  <% result.forEach( results =>{  %>
+                <a href="/<%= results._id %>"><h4><%= results.title   %></h4></a>
+                <h5> <%= results.snippet  %> </h5>
+                <p class="text"><%= results.body %></p>
+                <hr>
+                <% })} else { %>
+                  <h4>No Blogs To Display</h4>
+                  <hr>
+                  <% } %>
+           </div>
+        </div>
+
+    </div>
+</body>
+</html>
