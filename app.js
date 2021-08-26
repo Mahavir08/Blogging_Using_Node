@@ -43,7 +43,7 @@ app.get('/blogs/create-blogs',(req,res)=>{
 
 app.get("/:id",(req,res)=>{
     const id = req.params.id;
-
+    if( !mongoose.Types.ObjectId.isValid(id) ) return false;
     blogModel.findById(id)
     .then((result)=>{
         res.render('details',{result})
